@@ -63,6 +63,7 @@ body {
 .content h2, .content p {
     color: #000; /* Darker text color for better contrast */
     font-weight: normal; /* Adjust as needed */
+    padding-bottom: .5px;
 }
 
 /* Ensuring channel cards are at the bottom */
