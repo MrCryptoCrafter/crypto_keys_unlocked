@@ -56,7 +56,7 @@ body {
     border-radius: 8px; /* Optional: adds rounded corners to the content background */
     padding: 20px; /* Adjust as needed */
     margin: 15px;
-    padding-bottom: 100px; /* Increase padding to account for larger channel cards */
+    padding-bottom: 150px; /* Increase padding to account for larger channel cards */
 }
 
 /* Text styling for improved readability */
