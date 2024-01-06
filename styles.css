@@ -3,9 +3,13 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    background-image: url('Binary.gif'); /* Assuming the GIF is in the root directory */
     background-color: #f0f2f5; /* Light background for readability */
+    background-size: cover;
+    background-repeat: no-repeat;
     color: #333;
 }
+
 
 /* Stylish Navbar */
 .navbar {
@@ -46,9 +50,19 @@ body {
     }
 }
 
+/* Content styling with semi-transparent background */
 .content {
+    background-color: rgba(255, 255, 255, 0.8); /* White background with 80% opacity */
+    border-radius: 8px; /* Optional: adds rounded corners to the content background */
+    padding: 20px; /* Adjust as needed */
     margin: 15px;
     padding-bottom: 100px; /* Increase padding to account for larger channel cards */
+}
+
+/* Text styling for improved readability */
+.content h2, .content p {
+    color: #000; /* Darker text color for better contrast */
+    font-weight: normal; /* Adjust as needed */
 }
 
 /* Ensuring channel cards are at the bottom */
@@ -57,7 +71,9 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(to right, #4b6cb7, #182848); /* Gradient background for visual appeal */
+    background-image: url('banner.png'); /* Replace with the path to your banner image */
+    background-size: cover; /* Ensures the background covers the entire element */
+    background-position: center; /* Centers the background image */
     padding: 20px 0; /* Padding around the cards */
     z-index: 10; /* Ensuring it's above other content */
     display: flex;
