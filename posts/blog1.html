@@ -196,37 +196,37 @@
             <p>Similarly, for the Muladeviya cipher, since it's a reciprocal cipher, the decryption process is the same as encryption. We'll use the same table to decrypt the message.</p>
 
             <p>Let's implement these in Python.</p>
-            <pre><code class="codebox">
-            kautiliya_table = {'a': 'kh', 'ā': 'g', 'i': 'gh', 'r': 'l', 'l': 'y'}
-            muladeviya_table = {'a': 'kh', 'k': 'g', 'g': 'ṅ', 'n': 'ṣ', 'm': 'ś'}
+<pre><code class="codebox">
+kautiliya_table = {'a': 'kh', 'ā': 'g', 'i': 'gh', 'r': 'l', 'l': 'y'}
+muladeviya_table = {'a': 'kh', 'k': 'g', 'g': 'ṅ', 'n': 'ṣ', 'm': 'ś'}
 
-            def decrypt_kautiliya(cipher_text, table):
-                reversed_table = {v: k for k, v in table.items()}
-                plain_text = ""
-                i = 0
-                while i < len(cipher_text):
-                    if cipher_text[i:i+2] in reversed_table:
-                        plain_text += reversed_table[cipher_text[i:i+2]]
-                        i += 2
-                    else:
-                        plain_text += cipher_text[i]
-                        i += 1
-                return plain_text
+def decrypt_kautiliya(cipher_text, table):
+    reversed_table = {v: k for k, v in table.items()}
+    plain_text = ""
+    i = 0
+    while i < len(cipher_text):
+        if cipher_text[i:i+2] in reversed_table:
+            plain_text += reversed_table[cipher_text[i:i+2]]
+            i += 2
+        else:
+            plain_text += cipher_text[i]
+            i += 1
+    return plain_text
 
-            def decrypt_muladeviya(cipher_text, table):
-                plain_text = ""
-                for char in cipher_text:
-                    plain_text += table.get(char, char) 
-                return plain_text
+def decrypt_muladeviya(cipher_text, table):
+    plain_text = ""
+    for char in cipher_text:
+        plain_text += table.get(char, char) 
+    return plain_text
 
-            cipher_text_kautiliya = "dkhghkh"
-            cipher_text_muladeviya = "gṅṣṅ"
+cipher_text_kautiliya = "dkhghkh"
+cipher_text_muladeviya = "gṅṣṅ"
 
-            decrypted_kautiliya = decrypt_kautiliya(cipher_text_kautiliya, kautiliya_table)
-            decrypted_muladeviya = decrypt_muladeviya(cipher_text_muladeviya, muladeviya_table)
+decrypted_kautiliya = decrypt_kautiliya(cipher_text_kautiliya, kautiliya_table)
+decrypted_muladeviya = decrypt_muladeviya(cipher_text_muladeviya, muladeviya_table)
 
-            decrypted_kautiliya, decrypted_muladeviya
-            </code></pre>
+decrypted_kautiliya, decrypted_muladeviya
+</code></pre>
 
             <p>This code will decrypt the provided examples using the simplified substitution tables. In a real-world scenario, the full substitution table would be needed for accurate decryption. The approach here demonstrates the basic principle of reversing the substitution cipher.</p>
 
