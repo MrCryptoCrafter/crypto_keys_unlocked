@@ -1,0 +1,274 @@
+/* Base styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background-image: url('Binary.gif'); */
+    background-color: #0848a8; /* Light background for readability */
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #333;
+}
+
+
+/* Stylish Navbar */
+.navbar {
+    overflow: hidden;
+    background-color: #2c3e50; /* Dark background for navbar */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4); /* Adding shadow for depth */
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+.navbar a:hover {
+    background-color: #34495e; /* Slightly darker on hover */
+    color: #f1c40f; /* Change text color on hover for more visibility */
+}
+
+/* Active link styling */
+.navbar a.active {
+    background-color: #2980b9; /* Active link background color */
+    color: #fff;
+}
+
+/* Responsive Navbar */
+@media screen and (max-width: 600px) {
+    .navbar a {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+    }
+}
+
+/* Content styling with semi-transparent background */
+.content {
+    background-color: rgba(255, 255, 255, 0.8); /* White background with 80% opacity */
+    border-radius: 8px; /* Optional: adds rounded corners to the content background */
+    padding: 20px; /* Adjust as needed */
+    margin: 15px;
+    padding-bottom: 150px; /* Increase padding to account for larger channel cards */
+}
+
+/* Text styling for improved readability */
+.content h2, .content p {
+    color: #000; /* Darker text color for better contrast */
+    font-weight: normal; /* Adjust as needed */
+    padding-bottom: .5px;
+}
+
+/* Ensuring channel cards are at the bottom */
+.channel-cards {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-image: url('banner.png'); /* Replace with the path to your banner image */
+    background-size: cover; /* Ensures the background covers the entire element */
+    background-position: center; /* Centers the background image */
+    padding: 20px 0; /* Padding around the cards */
+    z-index: 10; /* Ensuring it's above other content */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap; /* Allows cards to wrap on resize */
+}
+
+/* Card adjustments for fixed position */
+.card {
+    background-color: #cecece;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 5px; /* Space between cards */
+    width: calc(33% - 20px); /* Three cards per row with spacing */
+    max-width: 300px;
+    transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
+    height: auto;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Lift card on hover */
+}
+
+.card-content {
+    padding: 10px;
+    text-align: center;
+}
+
+
+/* Adjust media query for larger screens */
+@media screen and (min-width: 600px) {
+    .channel-cards {
+        justify-content: center; /* Center cards on larger screens */
+    }
+}
+
+@media screen and (max-width: 599px) {
+    .card {
+        width: calc(50% - 20px); /* Two cards per row on medium screens */
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .card {
+        width: 90%; /* Full width cards on very small screens */
+    }
+}
+
+.channel-links {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e7f3fe;
+    border-left: 6px solid #2980b9;
+}
+
+.channel-links h3 {
+    margin-top: 0;
+}
+
+.channel-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.channel-links ul li {
+    margin-bottom: 10px;
+}
+
+.channel-links ul li a {
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.channel-links ul li a:hover {
+    text-decoration: underline;
+}
+
+
+.video-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+    gap: 20px; /* Space between cards */
+}
+
+.video-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px; /* Fixed width */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    overflow: hidden;
+}
+
+.video-card iframe {
+    width: 100%;
+    height: 168px; /* Fixed height */
+}
+
+.video-info {
+    padding: 10px;
+    text-align: center;
+}
+
+/* Responsive layout for video cards */
+@media (max-width: 600px) {
+    /* Full width on smaller screens */
+    .video-card {
+        width: calc(100% - 40px); /* Subtracting padding */
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1000px) {
+    /* 2 columns grid on medium screens */
+    .video-card {
+        width: calc(50% - 40px); /* Subtracting padding */
+    }
+}
+
+@media (min-width: 1001px) {
+    /* 3 columns grid on large screens */
+    .video-card {
+        width: calc(33.333% - 40px); /* Subtracting padding */
+    }
+}
+
+
+.blog-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .blog-card {
+    width: 300px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .blog-card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .blog-card h3 {
+    padding: 10px;
+  }
+
+
+  table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+  
+/* Style for the container of the Python code block */
+.language-python.highlighter-rouge {
+    background-color: #f3f3f7; /* Light grey background */
+    border: 1px solid #d1d1d6; /* Light border for distinction */
+    border-radius: 5px;        /* Rounded corners */
+    padding: 1em;              /* Padding around the text */
+    overflow-x: auto;          /* Horizontal scrolling if necessary */
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace; /* Monospaced font */
+}
+
+/* Style for the code text */
+.language-python .highlight pre.highlight {
+    margin: 0; /* Removes default margin */
+    color: #333333; /* Darker text color for contrast */
+    line-height: 1.5; /* Line spacing */
+}
+
+/* Specific syntax highlighting colors */
+.language-python .highlight pre.highlight .n { color: #0077aa; } /* Variable names */
+.language-python .highlight pre.highlight .o { color: #aa7700; } /* Operators */
+.language-python .highlight pre.highlight .p { color: #aa0077; } /* Punctuation */
+.language-python .highlight pre.highlight .k { color: #7700aa; } /* Keywords */
+.language-python .highlight pre.highlight .nf { color: #00aa77; } /* Function names */
+.language-python .highlight pre.highlight .s { color: #aa0077; } /* Strings */
+.language-python .highlight pre.highlight .sh { color: #aa0077; } /* String highlights */
