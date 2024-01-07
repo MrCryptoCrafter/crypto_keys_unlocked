@@ -1,0 +1,65 @@
+/* Use Poppins font for headings */
+h1, h2, h3, h4, h5 {
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* Rest of the heading styles remain the same as the previous code */
+h1 {
+    font-size: 2.5em; /* Adjust the font size for h1 */
+    color: #04426b; /* Set a cool blue color for h1 */
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for a 3D effect */
+}
+
+h2 {
+    font-size: 2em; /* Adjust the font size for h2 */
+    color: #2980b9; /* Set a variation of blue for h2 */
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for a 3D effect */
+}
+
+h3 {
+    font-size: 1.8em; /* Adjust the font size for h3 */
+    color: #3498db; /* Set a cool blue color for h3 */
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for a 3D effect */
+}
+
+h4 {
+    font-size: 1.5em; /* Adjust the font size for h4 */
+    color: #2c3e50; /* Set a darker blue color for h4 */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for a 3D effect */
+}
+
+h5 {
+    font-size: 1.2em; /* Adjust the font size for h5 */
+    color: #2980b9; /* Set a variation of blue for h5 */
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for a 3D effect */
+}
+
+/* Add additional styles as needed */
+
+#ancient {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f2e6; /* Base color resembling aged paper */
+    background-image: 
+        radial-gradient(circle, #d0c7ac 1px, transparent 1px),
+        radial-gradient(circle, #d0c7ac 1px, transparent 1px);
+    background-size: 30px 30px, 60px 60px; /* Size of the texture */
+    background-position: 0 0, 30px 30px; /* Positioning for the texture */
+    color: #333;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Optional: Adding a subtle overlay to enhance the ancient feel */
+#ancient::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    pointer-events: none; /* Ensures interactions with elements below */
+}

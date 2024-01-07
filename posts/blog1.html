@@ -7,10 +7,13 @@
     <title>Mlecchita Vikalpa</title>
     <link rel="icon" href="../channel_logo.png" type="image/x-icon">
     <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blogs.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
 </head>
-<body>
+<body id="ancient">
     <div class="navbar">
-        <a href="../index.html">Introduction</a>
+        <a href="../index.html">Home</a>
         <a href="../blogs.html">Blogs</a>
         <a href="../videos.html">Videos</a>
         <a href="../contact.html">Contact</a>
@@ -196,7 +199,8 @@
             <p>Similarly, for the Muladeviya cipher, since it's a reciprocal cipher, the decryption process is the same as encryption. We'll use the same table to decrypt the message.</p>
 
             <p>Let's implement these in Python.</p>
-<pre><code class="codebox">
+<div class="code-container">
+<pre><code id="codebox" class="codebox">
 kautiliya_table = {'a': 'kh', 'ā': 'g', 'i': 'gh', 'r': 'l', 'l': 'y'}
 muladeviya_table = {'a': 'kh', 'k': 'g', 'g': 'ṅ', 'n': 'ṣ', 'm': 'ś'}
 
@@ -225,8 +229,11 @@ cipher_text_muladeviya = "gṅṣṅ"
 decrypted_kautiliya = decrypt_kautiliya(cipher_text_kautiliya, kautiliya_table)
 decrypted_muladeviya = decrypt_muladeviya(cipher_text_muladeviya, muladeviya_table)
 
-decrypted_kautiliya, decrypted_muladeviya
+print(decrypted_kautiliya, decrypted_muladeviya)
 </code></pre>
+<button onclick="copyCode()" class="codebox-button">Copy</button>
+<span id="copy-message" style="display: none;">Code copied to clipboard!</span>
+</div>
 
             <p>This code will decrypt the provided examples using the simplified substitution tables. In a real-world scenario, the full substitution table would be needed for accurate decryption. The approach here demonstrates the basic principle of reversing the substitution cipher.</p>
 
@@ -252,6 +259,6 @@ decrypted_kautiliya, decrypted_muladeviya
             </ul>
 
     </div>
-
+    <script src="../script.js"></script>
 </body>
 </html>
