@@ -3,8 +3,8 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('Binary.gif'); /* Assuming the GIF is in the root directory */
-    background-color: #f0f2f5; /* Light background for readability */
+    /* background-image: url('Binary.gif'); */
+    background-color: #0848a8; /* Light background for readability */
     background-size: cover;
     background-repeat: no-repeat;
     color: #333;
@@ -231,4 +231,44 @@ body {
   .blog-card h3 {
     padding: 10px;
   }
+
+
+  table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
   
+/* Style for the container of the Python code block */
+.language-python.highlighter-rouge {
+    background-color: #f3f3f7; /* Light grey background */
+    border: 1px solid #d1d1d6; /* Light border for distinction */
+    border-radius: 5px;        /* Rounded corners */
+    padding: 1em;              /* Padding around the text */
+    overflow-x: auto;          /* Horizontal scrolling if necessary */
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace; /* Monospaced font */
+}
+
+/* Style for the code text */
+.language-python .highlight pre.highlight {
+    margin: 0; /* Removes default margin */
+    color: #333333; /* Darker text color for contrast */
+    line-height: 1.5; /* Line spacing */
+}
+
+/* Specific syntax highlighting colors */
+.language-python .highlight pre.highlight .n { color: #0077aa; } /* Variable names */
+.language-python .highlight pre.highlight .o { color: #aa7700; } /* Operators */
+.language-python .highlight pre.highlight .p { color: #aa0077; } /* Punctuation */
+.language-python .highlight pre.highlight .k { color: #7700aa; } /* Keywords */
+.language-python .highlight pre.highlight .nf { color: #00aa77; } /* Function names */
+.language-python .highlight pre.highlight .s { color: #aa0077; } /* Strings */
+.language-python .highlight pre.highlight .sh { color: #aa0077; } /* String highlights */
