@@ -206,29 +206,3 @@ body {
         width: calc(33.333% - 40px); /* Subtracting padding */
     }
 }
-
-
-.blog-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  
-  .blog-card {
-    width: 300px;
-    margin-bottom: 20px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .blog-card img {
-    width: 100%;
-    height: auto;
-  }
-  
-  .blog-card h3 {
-    padding: 10px;
-  }
-  
