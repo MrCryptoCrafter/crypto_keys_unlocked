@@ -3,8 +3,8 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('Binary.gif'); /* Assuming the GIF is in the root directory */
-    background-color: #f0f2f5; /* Light background for readability */
+    /* background-image: url('Binary.gif'); */
+    background-color: #0848a8; /* Light background for readability */
     background-size: cover;
     background-repeat: no-repeat;
     color: #333;
@@ -206,3 +206,109 @@ body {
         width: calc(33.333% - 40px); /* Subtracting padding */
     }
 }
+
+
+.blog-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.blog-card {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.blog-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.blog-card h3 {
+    margin: 10px;
+    text-align: center;
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) { /* Medium screens */
+    .blog-card {
+        flex: 1 1 calc(50% - 20px); /* 2 in a row */
+    }
+}
+
+@media (min-width: 1024px) { /* Large screens */
+    .blog-card {
+        flex: 1 1 calc(33.333% - 20px); /* 3 in a row */
+    }
+}
+
+@media (max-width: 767px) { /* Small screens */
+    .blog-card {
+        flex: 1 1 100%; /* 1 in a row */
+    }
+}
+  /* General table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #f9f9f9; /* Light grey background */
+    color: #333; /* Dark text for readability */
+    border: 1px solid #ddd; /* Light grey border */
+}
+
+/* Header styles */
+th {
+    background-color: #071307; /* Green background for headers */
+    color: white; /* White text for headers */
+    text-align: left;
+    padding: 8px; /* Spacing inside cells */
+}
+
+/* Data cell styles */
+td {
+    border: 1px solid #ddd; /* Light grey border for cells */
+    padding: 8px; /* Spacing inside cells */
+}
+
+/* Table row hover effects */
+tr:hover {
+    background-color: #ddd; /* Light grey background on hover */
+}
+
+
+.author {
+    text-align: right;
+    color: red;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.codebox {
+    background-color: #f4f4f4; /* Light grey background */
+    border-left: 3px solid #f36d33; /* Colored border on the left */
+    color: #333; /* Dark grey text for readability */
+    font-family: 'Courier New', Courier, monospace; /* Monospaced font for code */
+    padding: 10px 15px; /* Padding inside the code box */
+    overflow-x: auto; /* Horizontal scrolling for long lines of code */
+    display: block;
+    white-space: pre-wrap; /* Ensures that lines do not break */
+    word-wrap: break-word; /* Breaks long words */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-bottom: 20px; /* Space below the code box */
+}
+
+/* Optional: Style for line numbers (if you have them) */
+.line-numbers-rows {
+    border-right: 1px solid #ddd; /* Line separating line numbers from code */
+    padding-right: 10px; /* Space between line numbers and code */
+    color: #999; /* Light grey for line numbers */
+}
+
+
