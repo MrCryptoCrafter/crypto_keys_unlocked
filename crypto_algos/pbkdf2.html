@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="icon" href="../channel_logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>PBKDF2 Key Derivation</title>
+    <style>
+        .kdf {
+            display: flex;
+            justify-content: center; /* Horizontal centering */
+            flex-direction: column; /* Stack children vertically */
+            align-items: center; /* Vertical centering */
+        }
+        h1 {
+            color: #333;
+        }
+
+        /* Form styling */
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        .input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-container input[type="password"], .input-container input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            padding-right: 40px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        .input-container button#toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: grey;
+            padding: 0;
+            margin: 0;
+        }
+
+        .input-container button#toggle-password i {
+            font-size: 1em;
+        }
+        button {
+            background-color: #0056b3;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #004494;
+        }
+        select {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            background-color: white;
+            box-sizing: border-box;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        button[type="submit"] {
+            background-color: #28a745;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+        .results {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        .results p {
+            margin: 10px 0;
+            word-wrap: break-word;
+        }
+                
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html" >Home</a>
+        <a href="../blogs.html">Blogs</a>
+        <a href="../videos.html">Videos</a>
+        <a href="algo.html">Implementations</a>
+        <a href="../contact.html">Contact</a>
+    </div>
+    <div class="content">
+    <div class="kdf">
+
+        <h1>PBKDF2 Key Derivation</h1>
+        <form id="pbkdf2-form">
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <div class="input-container">
+                    <input type="password" id="password" required>
+                    <button type="button" id="toggle-password" title="Show Password">
+                    <i class="fa fa-eye"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="salt">Salt (optional):</label>
+            <div class="input-container">
+                <input type="text" id="salt">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="iterations">Iterations:</label>
+            <select id="iterations">
+                
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="keyLength">Key Length (bytes):</label>
+            <select id="keyLength">
+                <option value="128">128</option>
+                <option value="256">256</option>
+                <option value="512">512</option>
+                <option value="1024">1024</option>
+            </select>
+        </div>
+        <button type="submit">Derive Key</button>
+    </form>
+
+    <div class="results">
+        <h2>Results</h2>
+        <p>Derived Key: <span id="derived-key"></span> <button id="copy-button">Copy</button></p>
+        <p>Used Salt: <span id="used-salt"></span></p>
+        <button id="download-button">Download JSON</button>
+    </div>
+</div>
+</div>
+    <script src="pbkdf2.js"></script>
+    <script src="../script.js"></script>
+    <script src="../pbkdf2/kdf.js"></script>
+</body>
+</html>

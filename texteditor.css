@@ -1,0 +1,20 @@
+#editor {
+    margin: 10px;
+    position: relative;
+  }
+  
+  textarea {
+    width: 600px;
+    height: 300px;
+  }
+  
+  #output {
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
+    width: 600px;
+    height: 100px;
+    overflow: scroll;
+  }
+  

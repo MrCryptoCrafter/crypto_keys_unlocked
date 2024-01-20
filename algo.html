@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoKey Blogs</title>
+    <link rel="icon" href="channel_logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Style for algorithm links */
+        .algorithm-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding-top: 30px;
+            gap: 20px;
+        }
+    
+        .algo-card {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+    
+        .algo-card h3 {
+            margin: 10px;
+            color: #333; /* Text color */
+        }
+    
+        .algo-card a {
+            text-decoration: none;
+        }
+    
+        .algo-card:hover {
+            transform: translateY(-10px);
+            background-color: #fff; /* Background color on hover */
+        }
+        /* Styling for algorithm search input field */
+        .algo-search {
+                margin-top: 20px;
+                display: flex;
+                align-items: center;
+            }
+
+            #algoSearch {
+                flex: 1;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 16px;
+            }
+
+            #findButton {
+                background-color: #2c3e50; /* Button background color */
+                color: white; /* Button text color */
+                border: none;
+                border-radius: 4px;
+                padding: 10px 20px;
+                margin-left: 10px;
+                cursor: pointer;
+                transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+            }
+
+            #findButton:hover {
+                background-color: #34495e; /* Slightly darker color on hover */
+            }
+    
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            .algo-card {
+                width: calc(100% - 20px);
+            }
+        }
+    
+        @media (min-width: 601px) and (max-width: 1000px) {
+            .algo-card {
+                width: calc(50% - 20px);
+            }
+        }
+    
+        @media (min-width: 1001px) {
+            .algo-card {
+                width: calc(33.333% - 20px);
+            }
+        }
+    </style>    
+</head> 
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="blogs.html">Blogs</a>
+        <a href="videos.html">Videos</a>
+        <a href="algo.html">Implementations</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="content">
+        <h2>Implemented Algorithms</h2>
+        <p>The following algorithms are implemented in JavaScript. Click on one of the boxes to test them out.</p>
+        <div class="algo-search">
+            <input type="text" id="algoSearch" placeholder="Search algorithm">
+            <button id="findButton">Find</button>
+        </div>
+    
+        <div class="algorithm-gallery">
+            <div class="algo-card">
+                <a href="crypto_algos/pbkdf2.html" class="algo-link">
+                    <h3>PBKDF2 Algorithm</h3>
+                </a>
+            </div>
+            <!-- You can add more algorithm entries here in a similar format -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Function to scroll to an element by ID
+        function scrollToElement(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    
+        // Function to handle the "Find" button click
+        document.getElementById("findButton").addEventListener("click", () => {
+            const searchTerm = document.getElementById("algoSearch").value.toLowerCase();
+            const algorithmLinks = document.querySelectorAll('.algo-card h3');
+            let found = false;
+    
+            algorithmLinks.forEach(link => {
+                const algorithmName = link.textContent.toLowerCase();
+                if (algorithmName.includes(searchTerm)) {
+                    scrollToElement(link.parentElement.getAttribute('href').substring(1));
+                    link.style.backgroundColor = 'yellow'; // Highlight found items
+                    found = true;
+                } else {
+                    link.style.backgroundColor = 'white'; // Reset background color
+                }
+            });
+    
+            if (!found) {
+                alert("No results found.");
+            }
+        });
+    </script>
+        
+</body>
+</html>
