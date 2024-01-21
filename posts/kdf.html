@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDF</title>
+    <link rel="icon" href="../channel_logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../blogs.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
+    <style>
+        code{
+            color: crimson;
+            padding: auto;
+        }
+        .svg-container {
+            text-align: center;
+            width: 100%;
+        }
+        figcaption {
+            margin-top: 10px;
+            color: blue;
+        }
+    </style>
+</head>
+<body id="give_by_topic">
+    <div class="navbar">
+        <a href="../index.html" >Home</a>
+        <a href="../blogs.html">Blogs</a>
+        <a href="../videos.html">Videos</a>
+        <a href="../algo.html">Implementations</a>
+        <a href="../contact.html">Contact</a>
+    </div>
+    <div class="content">
+        <div class="blog-post">
+            <h1>Key Derivation Functions: From Introduction to Implementation</h1>
+            <hr />
+            <hr />
+            <p>Date of Posting: <span style="color:#e74c3c">21.01.2024</span></p>
+            
+            <p style="text-align:right">-by <span style="color:#e74c3c">Debrup Chatterjee</span></p>
+            <hr />
+            <p>Welcome to our comprehensive exploration of <em>Key Derivation Functions</em> (KDFs), a cornerstone concept in the realm of cryptographic security. In this blog post, we delve into the multifaceted world of KDFs, unraveling their cryptographic underpinnings, practical applications, and the pivotal role they play in enhancing security measures..</p>
+            
+            <p>Our journey will take us through various dimensions of KDFs - from theoretical foundations to real-world implementations. We will showcase a hands-on example, specifically focusing on the PBKDF2 algorithm, a widely recognized and employed KDF in the cybersecurity community. This exploration is not just theoretical; we have implemented PBKDF2 in Python to provide a tangible, interactive experience. You can witness this implementation in action at <a href="https://crypto-keys-unlocked.github.io/crypto_algos/pbkdf2.html" target="_blank" rel="noopener noreferrer">https://crypto-keys-unlocked.github.io/crypto_algos/pbkdf2.html</a>, where we break down the complexities into understandable segments.</p>
+            
+            <p>Python, known for its simplicity and versatility, serves as the coding language for our implementation. This choice allows us to demonstrate complex cryptographic operations in an accessible and clear manner, making it easier for enthusiasts, students, and professionals alike to grasp the intricacies of KDFs.</p>
+            
+            <p>As we venture into the details of KDFs, we&#39;ll explore their various use cases, emphasizing how they are seamlessly integrated into different aspects of digital security. From password hashing to generating cryptographic keys, KDFs are instrumental in ensuring that sensitive data remains protected against an array of cyber threats.</p>
+            
+            <p>Understanding KDFs is not just about knowing their functionality; it&rsquo;s about appreciating the security they impart in our increasingly digital world. So, let&#39;s embark on this enlightening journey together, uncovering the secrets and strengths of Key Derivation Functions.</p>
+            
+            <h2>Definition and Examples</h2>
+            <hr />
+            
+            <h3>Definition</h3>
+            
+            <p>Key Derivation Functions (KDFs) are cryptographic algorithms that transform input data, typically a secret key or password, into a fixed-size cryptographic key. The essence of a KDF lies in its ability to take a piece of secret data, like a password, and expand or condense it into a key of desired length and format. This process not only creates keys that are suitable for cryptographic operations but also adds an additional layer of security. KDFs are designed to be computationally intensive, making them resistant to brute-force attacks and various other forms of cryptographic attacks.</p>
+            <figure class="svg-container">
+                <object type="image/svg+xml" data="/Images/skdf.svg" width="40%">
+                    Password-Based Key Derivation Overview
+                </object>
+                <figcaption id="fig-caption">Password-Based Key Derivation Overview</figcaption>
+            </figure>
+
+            <p>KDFs can be broadly categorized into two types:</p>
+            
+            <ol>
+                <li>
+                <p><strong>Key Stretching KDFs</strong>: These are used to strengthen keys or passwords that are not initially strong enough for cryptographic use, often due to their short length or low entropy. By applying algorithms that require significant computational effort, key stretching KDFs make it time-consuming and computationally expensive for attackers to perform brute-force attacks.</p>
+                </li>
+                <li>
+                <p><strong>Key Agreement KDFs</strong>: These are employed in cryptographic protocols where a shared secret key is generated between two or more parties. The shared secret key is then processed through a KDF to generate encryption keys, ensuring secure communication.</p>
+                </li>
+            </ol>
+            
+            <h3>Examples</h3>
+            
+            <p>These are some examples of KDFs that are widely used:</p>
+            
+            <ol>
+                <li><strong>PBKDF2 (Password-Based Key Derivation Function 2):</strong> PBKDF2 is one of the most widely used key stretching KDFs. It applies a pseudorandom function, such as HMAC, to the input password along with a salt value and iterates this process multiple times to produce a derived key. The number of iterations enhances the security, making it harder for attackers to perform brute-force attacks. This function is frequently used for password hashing and protecting data.</li>
+                <li><strong>HKDF (HMAC-based Key Derivation Function):</strong> HKDF is a simple, yet powerful KDF based on HMAC (Hash-based Message Authentication Code). It is designed to extract and expand keys, making it suitable for various applications, from key stretching to key agreement. HKDF is known for its versatility and security, being able to generate keys for different cryptographic operations from a single initial key.</li>
+                <li><strong>Scrypt:</strong> Scrypt is another key derivation function designed to make it costly to perform large-scale custom hardware attacks. It not only requires a significant amount of computational power but also a considerable amount of memory, which adds an extra layer of security. Scrypt is commonly used in cryptocurrency applications, especially in the mining and securing of cryptocurrencies like Litecoin.</li>
+                <li><strong>Bcrypt:</strong> Bcrypt is a password hashing function that incorporates a salt to protect against rainbow table attacks. It&rsquo;s unique in the sense that it adapts over time to increased computational power by allowing the number of iterations (or rounds) to be increased. This adaptability makes Bcrypt a robust choice for password hashing in modern applications.</li>
+            </ol>
+            
+            <p>Now that we have looked into basic definition and&nbsp; some example let us see in the next section how this works.</p>
+            
+            <h2>Key Derivation Process: A Mathematical Perspective</h2>
+            <hr />
+            <p>The key derivation process is a multi-step procedure that transforms a simple input, such as a password, into a secure cryptographic key. Here's an overview of each step in the process:</p>                
+                <ol>
+                    <li>
+                        <strong>Initial Input Transformation:</strong>
+                        <p>Let \( P \) be the initial password or passphrase, and \( S \) be the salt, a randomly generated string. The combination of \( P \) and \( S \) can be represented as \( PS = P || S \), where \( || \) denotes concatenation.</p>
+                    </li>
+                    <li>
+                        <strong>Application of the Key Derivation Function:</strong>
+                        <p>The KDF applies a pseudorandom function \( f \) to \( PS \). If \( f \) is a hash function, then the output after one iteration is \( f(PS) \).</p>
+                    </li>
+                    <li>
+                        <strong>Iteration Process:</strong>
+                        <p>For \( n \) iterations, the function is applied repeatedly: \( f^n(PS) = f(f(...f(PS)...)) \), where \( f^n \) represents the \( n \)-th iterative application of \( f \).</p>
+                    </li>
+                    <li>
+                        <strong>Deriving the Final Key:</strong>
+                        <p>The final output \( K \) after \( n \) iterations is \( K = f^n(PS) \). This \( K \) is the derived key, now suitable for cryptographic use.</p>
+                    </li>
+                    <li>
+                        <strong>Key Utilization and Storage:</strong>
+                        <p>The derived key \( K \) is used for cryptographic processes. In practice, \( K \), along with the salt \( S \) and iteration count \( n \), are securely stored or transmitted as needed.</p>
+                    </li>
+                </ol>
+            </div>
+            
+            <h2>PBKDF2</h2>
+            <hr />
+
+<p>PBKDF2 (Password-Based Key Derivation Function 2) is widely used in cryptographic applications for generating strong keys from passwords. It employs a cryptographic hash function, such as SHA-1, SHA-256, or SHA-512, to process the password and salt. The number of iterations determines how many times the hash function is applied, enhancing the security against brute-force attacks. The resulting derived key is then used for encryption, authentication, or other cryptographic operations.</p>
+
+<h3>Understanding the PBKDF2 Algorithm</h3>
+<p>In this section, we'll explore the mechanics of the PBKDF2 (Password-Based Key Derivation Function 2) algorithm. PBKDF2 is a robust method used to generate a secure cryptographic key from a user-provided password. This algorithm is particularly effective in defending against various attack vectors, including brute-force attacks.</p>
+<figure class="svg-container">
+    <object type="image/svg+xml" data="/Images/KDF.svg" width="50%">
+        Password-Based Key Derivation Function 2 Algorithm
+    </object>
+    <figcaption id="fig-caption">Password-Based Key Derivation Function 2 Algorithm</figcaption>
+</figure>
+<p>Let's break down the algorithm into its fundamental components:</p>
+<p>\[ \text{DerivedKey} = \text{PBKDF2}(\text{HashFunc}, \text{UserPassword}, \text{SaltValue}, \text{IterCount}, \text{KeyLength}) \]</p>
+<ul>
+    <li><strong>HashFunc</strong>: This refers to the Pseudo-Random Function used, typically a keyed HMAC function, producing an output of length \( \text{HashLen} \).</li>
+    <li><strong>UserPassword</strong>: The user's password from which the derived key will be generated.</li>
+    <li><strong>SaltValue</strong>: A unique cryptographic salt, enhancing the security of the derived key.</li>
+    <li><strong>IterCount</strong>: The iteration count, increasing the complexity and security of the key derivation process.</li>
+    <li><strong>KeyLength</strong>: The desired length of the derived cryptographic key.</li>
+    <li><strong>DerivedKey</strong>: The final output, which is the secure cryptographic key.</li>
+</ul>
+
+<p>The derived key is computed by concatenating several hash blocks:</p>
+<p>\[ \text{DerivedKey} = \text{Block}_1 + \text{Block}_2 + \ldots + \text{Block}_{\frac{\text{KeyLength}}{\text{HashLen}}} \]</p>
+<p>Each block \( \text{Block}_i \) is calculated by applying an exclusive OR operation over multiple iterations:</p>
+<p>\[ \text{Block}_i = \text{XORFunc}(\text{UserPassword}, \text{SaltValue}, \text{IterCount}, i) \]</p>
+<p>Where the XOR function \( \text{XORFunc} \) is defined as:</p>
+<p>\[ \text{XORFunc}(\text{UserPassword}, \text{SaltValue}, \text{IterCount}, i) = \text{Hash}_1 \oplus \text{Hash}_2 \oplus \ldots \oplus \text{Hash}_{\text{IterCount}} \]</p>
+<p>with each hash \( \text{Hash}_j \) calculated as:</p>
+<p>\[ \text{Hash}_1 = \text{HashFunc}(\text{UserPassword}, \text{SaltValue} + \text{EncodeInt}(i)) \]</p>
+<p>\[ \text{Hash}_j = \text{HashFunc}(\text{UserPassword}, \text{Hash}_{j-1}) \, \text{for} \, j > 1 \]</p>
+
+<p>A practical example of PBKDF2 is its application in network security protocols like WPA2:</p>
+<p>\[ \text{DerivedKey} = \text{PBKDF2}(\text{HMAC-SHA1}, \text{NetworkPass}, \text{NetworkSSID}, 4096, 256) \]</p>
+<p>Here, 'NetworkPass' is the network password, and 'NetworkSSID' is the identifier for the Wi-Fi network.</p>
+
+
+<h3>PBKDF2 Implementation</h3>
+<p>We are going to walk you through the implementation of the PBKDF2 algorithm in Python. This function is a key tool in cryptography for generating strong cryptographic keys from simple passwords. Let's dive into each step:</p>
+<ol>
+    <li><strong>Setting Up:</strong>
+        <p>First, we need to import the necessary library:</p>
+        <p><code>import hashlib</code></p>
+        <p>I'm using Python's <code>hashlib</code> library here because it offers the cryptographic hashing functions we need.</p>
+    </li>
+    <li><strong>Defining Our Function:</strong>
+        <p>Next, we define the main function:</p>
+        <p><code>def pbkdf2_manual(hash_function, password, salt, iterations, dk_len):</code></p>
+        <p>This function, <code>pbkdf2_manual</code>, will take five parameters: the hashing algorithm, password, salt, iteration count, and the desired length of the derived key.</p>
+    </li>
+    <li><strong>Preparing Inputs:</strong>
+        <p>It's crucial that both the password and salt are in byte format:</p>
+        <p><code>if isinstance(password, str): password = password.encode('utf-8')</code></p>
+        <p><code>if isinstance(salt, str): salt = salt.encode('utf-8')</code></p>
+        <p>This ensures compatibility with the cryptographic functions we'll use later.</p>
+    </li>
+    <li><strong>Creating the Pseudo-Random Function:</strong>
+        <p>Here's how we define the PRF (Pseudo-Random Function):</p>
+        <p><code>def prf(key, data): return hashlib.new(hash_function, key + data).digest()</code></p>
+        <p>This function is the heart of PBKDF2, applying the hashing algorithm to our inputs.</p>
+    </li>
+    <li><strong>Initiating the Derived Key:</strong>
+        <p>We start with an empty byte string for our derived key:</p>
+        <p><code>derived_key = b''</code></p>
+    </li>
+    <li><strong>Computing the Number of Blocks:</strong>
+        <p>Then, we calculate how many blocks are needed:</p>
+        <p><code>block_count = (dk_len + hashlib.new(hash_function).digest_size - 1) // hashlib.new(hash_function).digest_size</code></p>
+        <p>This determines how many times we need to apply the hashing function to get our final key.</p>
+    </li>
+    <li><strong>The Derivation Loop:</strong>
+        <p>Now, let's iterate over each block to build our key:</p>
+        <p><code>for i in range(1, block_count + 1): ...</code></p>
+        <p>Each iteration applies the PRF and uses XOR to combine the results.</p>
+    </li>
+    <li><strong>Finalizing the Key:</strong>
+        <p>Finally, we truncate the derived key to our desired length:</p>
+        <p><code>return derived_key[:dk_len]</code></p>
+    </li>
+    <li><strong>Putting It All Together:</strong>
+        <p>Here's an example of how to use our function:</p>
+        <p><code>derived_key = pbkdf2_manual('sha256', 'yourpassword', 'somesalt', 1000, 32)</code></p>
+        <p><code>print("Derived Key (Hex):", derived_key.hex())</code></p>
+        <p>This code will output the derived key in hexadecimal format.</p>
+    </li>
+</ol>
+This is the combined code that can be run to get the hash for example: 
+<p>&nbsp;</p>
+            <div class="code-container">
+            <div class="code-header">
+                <span class="language-label">Python</span>
+                <button class="copy-button" onclick="copyToClipboard()">Copy Code</button>
+            </div>
+            <pre class="prettyprint lang-python">
+<code>import hashlib
+
+def pbkdf2_manual(hash_function, password, salt, iterations, dk_len):
+    """Manual implementation of PBKDF2."""
+    # Ensuring that the password and salt are bytes
+    if isinstance(password, str):
+        password = password.encode('utf-8')
+    if isinstance(salt, str):
+        salt = salt.encode('utf-8')
+
+    # Derivation function
+    def prf(key, data):
+        return hashlib.new(hash_function, key + data).digest()
+
+    # Main loop for derivation
+    derived_key = b''
+    block_count = (dk_len + hashlib.new(hash_function).digest_size - 1) // hashlib.new(hash_function).digest_size
+    for i in range(1, block_count + 1):
+        u = prf(password, salt + i.to_bytes(4, byteorder='big'))
+        t = u
+        for _ in range(iterations - 1):
+            u = prf(password, u)
+            t = bytes(a ^ b for a, b in zip(t, u))
+        derived_key += t
+
+    # Truncate to desired length
+    return derived_key[:dk_len]
+
+# Example usage
+password = "yourpassword"
+salt = "somesalt"
+iterations = 1000
+dk_len = 32  # 32 bytes = 256 bits
+
+derived_key = pbkdf2_manual('sha256', password, salt, iterations, dk_len)
+print("Derived Key (Hex):", derived_key.hex())</code></pre>
+            </div>
+                <h2>Security Analysis and Alternatives</h2>
+                <hr />
+                <h3>Security Analysis of PBKDF2</h3>
+                <p>PBKDF2 has been a cornerstone in password-based key derivation for many years. Its design aims to make password cracking efforts both time-consuming and computationally expensive. Here's an in-depth look at its security features and potential vulnerabilities:</p>
+                <p><strong>Brute-Force Resistance:</strong> The key feature of PBKDF2 is its resistance to brute-force attacks. By applying a hash function iteratively, the time required to test each password candidate increases, which deters brute-force attempts significantly. The iteration count, a configurable parameter in PBKDF2, allows the balancing of security needs against performance requirements. Higher iteration counts offer better security but at the cost of increased computational load.</p>
+                <p><strong>Salt Usage:</strong> The incorporation of a unique salt with each password is a critical defense against rainbow table attacks. A salt is a random string that, when appended to the password, ensures that the hash output for the same password is different across different instances, thereby nullifying the effectiveness of precomputed hash databases.</p>
+                <p><strong>Vulnerability to Hardware Acceleration:</strong> While effective against general-purpose hardware, PBKDF2's simplicity makes it vulnerable to attacks using specialized hardware like GPUs or ASICs. These devices can parallelize hash computations, dramatically speeding up brute-force attacks.</p>
+            
+                <h3>Exploring Alternatives to PBKDF2</h3>
+                <p>As the cybersecurity landscape evolves, it becomes crucial to explore alternative KDFs that address some of PBKDF2's shortcomings, particularly in resistance to hardware acceleration:</p>
+                <ul>
+                    <li><strong>bcrypt:</strong> An alternative to PBKDF2, bcrypt is particularly effective against hardware acceleration attacks due to its computational and memory-intensive operations. The algorithm incorporates a cost factor that controls the computational intensity, allowing it to scale with hardware capabilities over time.</li>
+                    <li><strong>scrypt:</strong> scrypt further increases the memory requirements during the key derivation process. This design is intended to make the use of high-speed memory in hardware attacks less effective, hence providing a stronger defense against such threats.</li>
+                    <li><strong>Argon2:</strong> Argon2, the latest advancement in KDFs, offers several modes of operation to balance the trade-off between resistance to hardware attacks and computational efficiency. It has configurable parameters for memory and CPU usage, allowing for a more tailored approach to key derivation based on the specific security environment.</li>
+                </ul>
+            <h2>Use Cases of KDF</h2>
+            <hr />
+            <p>PBKDF2 plays a crucial role in bolstering password security and protecting sensitive data in various applications. Understanding its workings and best practices for its implementation is essential for ensuring the safety of user information. Here are a few places it is used:</p>
+            <h3>Password-Based Encryption</h3>
+            <p>KDFs are crucial in converting passwords into cryptographic keys for secure data encryption. This process is vital in scenarios where user-friendly passwords need to be transformed into robust keys for encryption algorithms.</p>
+            <p>Example: VeraCrypt, an encryption tool, employs PBKDF2 for enhancing the security of encryption keys derived from user passwords.</p>
+            <p>Read more on: <a href="https://www.veracrypt.fr/en/Documentation.html">VeraCrypt's Documentation</a></p>
+        
+            <h3>Cryptographic Protocols</h3>
+            <p>In cryptographic protocols like SSL/TLS, KDFs are instrumental in deriving multiple secret values from a single shared secret. This enhances the security of communication channels by ensuring the integrity and confidentiality of the data being exchanged.</p>
+            <p>Example: The TLS 1.2 protocol utilizes KDFs in its key exchange mechanism, ensuring secure communications over the internet.</p>
+            <p>Read more on: <a href="https://tools.ietf.org/html/rfc5246">TLS 1.2 Protocol - RFC 5246</a></p>
+        
+            <h3>Password Storage</h3>
+            <p>KDFs significantly improve the security of stored passwords. By using techniques like salting and stretching, KDFs ensure that stored passwords are resistant to various types of attacks including brute-force and rainbow table attacks.</p>
+            <p>Example: Password management systems like LastPass use KDFs to securely store user passwords.</p>
+            <p>Read more on: <a href="https://www.lastpass.com/security">LastPass Security Features</a></p>
+        
+            <h3>Cryptographically Secure Random Number Generators</h3>
+            <p>KDFs play a critical role in random number generators, especially in cryptographic applications. They help in deriving high-entropy keys from sources that might not inherently possess high entropy.</p>
+            <p>Example: The Linux kernel's RNG system incorporates KDFs to enhance the security and unpredictability of generated random numbers.</p>
+            <p>Read more on: <a href="https://www.kernel.org/doc/html/latest/crypto/index.html">Linux Kernel RNG Documentation</a></p>
+            <figure style="text-align:center;">
+                <img src="/Images/usecase_kdf.png" alt="Mlecchita Vikalpa" style="width:50%;">
+                <figcaption>Use Cases of KDF</figcaption>
+            </figure>
+            <h3>Blockchain Technology</h3>
+            <p>In the blockchain ecosystem, KDFs are essential for wallet security and key management. They are used to generate private keys from mnemonic phrases or passwords, which are fundamental for the security of digital assets.</p>
+            <p>Example: Bitcoin wallets often utilize PBKDF2 to generate private keys from mnemonic recovery phrases, a critical process in securing cryptocurrency assets.</p>
+            <p>Read more on: <a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki">Bitcoin's BIP39 Specification</a></p>
+        
+            <h3>Wi-Fi Security</h3>
+            <p>KDFs are also used in securing wireless networks. In Wi-Fi security protocols, KDFs transform pre-shared keys into dynamic keys, thus safeguarding the network against unauthorized access.</p>
+            <p>Example: WPA2, a common Wi-Fi security protocol, employs KDFs to enhance the security of wireless networks.</p>
+            <p>Read more on: <a href="https://www.wi-fi.org/discover-wi-fi/security">Wi-Fi Alliance Security</a></p>
+        
+            <h3>Secure File Systems</h3>
+            <p>File systems that offer encryption features often use KDFs to secure the encryption keys. This ensures that the data stored on these file systems is protected against unauthorized access and breaches.</p>
+            <p>Example: Encrypted file systems like Microsoft's BitLocker use KDFs to secure the encryption keys used for protecting data on disk.</p>
+            <p>Read more on: <a href="https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview">BitLocker Overview</a></p>
+        
+            <p>Each of these examples illustrates the pivotal role KDFs play across various aspects of digital security and cryptography, highlighting their importance in safeguarding digital information and assets.</p>        
+            <h2>Conclusion</h2>
+            <hr />
+            <p>In conclusion, while PBKDF2's design offers significant protection against several types of attacks, its vulnerabilities, particularly in the context of modern hardware capabilities, necessitate a careful consideration of alternatives. Technologies like bcrypt, scrypt, and Argon2 represent the next generation of KDFs, offering enhanced security features tailored to counter contemporary attack strategies. The choice of a key derivation function should be guided by the specific security needs, performance requirements, and threat environment of your application.</p>
+            <h2>References</h2>
+            <hr />
+            <ol>
+                <li>
+                    Iuorio, A. F., & Visconti, A. (2019). Understanding Optimizations and Measuring Performances of PBKDF2. Proceedings of the 2nd International Conference on Wireless, Intelligent and Distributed Environment for COMmunication (WIDECOM 2019), Springer International Publishing. Available at: <a href="https://eprint.iacr.org/2019/161" target="_blank" rel="noopener noreferrer">eprint.iacr.org/2019/161</a>.
+                </li>
+                <li>
+                    NIST's Proposal to Revise SP 800-132, which details the use of PBKDF2 and recommendations for password-based key derivation. Available at: <a href="https://csrc.nist.gov/News/2023/proposal-to-revise-nist-sp-800-132-pbkdf" target="_blank" rel="noopener noreferrer">csrc.nist.gov</a>.
+                </li>
+                <li>
+                    RFC 6070, which includes test vectors for PBKDF2 with HMAC-SHA1, published by the Internet Engineering Task Force (IETF). Available at: <a href="https://datatracker.ietf.org/doc/rfc6070/" target="_blank" rel="noopener noreferrer">datatracker.ietf.org</a>.
+                </li>
+                <li>
+                    Anthony Simmon's guide on robust password hashing using PBKDF2 in .NET systems, illustrating practical application. Available at: <a href="https://anthonysimmon.com/" target="_blank" rel="noopener noreferrer">anthonysimmon.com</a>.
+                </li>
+                <li>
+                    Wikimedia Commons image depicting PBKDF2, under public domain and free of known copyright restrictions. Available at: <a href="https://commons.wikimedia.org/wiki/File:Pbkdf2_nist.png" target="_blank" rel="noopener noreferrer">commons.wikimedia.org</a>.
+                </li>
+            </ol>            
+        </div>        
+    </div>
+    
+<script src="../script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    function copyToClipboard() {
+        const codeElement = document.querySelector('.prettyprint code');
+        const textToCopy = codeElement.innerText;
+
+        const textarea = document.createElement('textarea');
+        textarea.value = textToCopy;
+
+        // Ensure it is a readonly input to prevent iOS keyboard from popping up
+        textarea.setAttribute('readonly', '');
+
+        document.body.appendChild(textarea);
+
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+
+        // Display a message indicating that the code is copied
+        const copyButton = document.querySelector('.copy-button');
+        copyButton.innerText = 'Code Copied!';
+        setTimeout(() => {
+            copyButton.innerText = 'Copy Code';
+        }, 2000); // Reset the button text after 2 seconds
+    }
+</script>
+    <script>
+        window.onload = function () {
+            PR.prettyPrint();
+        };
+    </script>
+
+</body>
+</html>

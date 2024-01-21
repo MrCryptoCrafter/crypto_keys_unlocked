@@ -63,3 +63,48 @@ h5 {
     background: rgba(255, 255, 255, 0.2);
     pointer-events: none; /* Ensures interactions with elements below */
 }
+
+
+/* Styling for the code container in light theme */
+.code-container {
+    background-color: #faffe1; /* Light gray background color */
+    border: 1px solid #ddd; /* Light gray border for distinction */
+    border-radius: 6px; /* Rounded corners */
+    padding: 16px; /* Padding for content */
+    margin-bottom: 20px; /* Add some margin to separate code blocks */
+    font-family: 'Courier New', monospace; /* Use a monospaced font for code */
+    position: relative;
+}
+
+/* Styling for the code header in light theme */
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e0e0e0; /* Light gray header background color */
+    padding: 8px 16px; /* Padding for the header */
+    border-radius: 6px 6px 0 0; /* Rounded corners for the top */
+}
+
+/* Styling for the language label in light theme */
+.language-label {
+    color: #007bff; /* Blue color for the language label in light theme */
+    font-weight: bold;
+}
+
+/* Styling for the copy button in light theme */
+.copy-button {
+    background-color: #007bff; /* Blue color for the button in light theme */
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.copy-button:hover {
+    background-color: #0056b3; /* Darker blue color on hover in light theme */
+}
+.prettyprint{
+    border: none;
+}
