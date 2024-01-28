@@ -1,0 +1,47 @@
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+#intro div {
+    margin-bottom: 10px;
+}
+
+#introPart1 .styled-text { color: #000000; } /* Color for the first part */
+#introPart2 .styled-text { color: #0300b3d8; } /* Color for the second part */
+#introPart3 .styled-text { color: #aa00c0; } /* Color for the third part */
+
+.styled-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    white-space: pre-line;
+}
+
+.hi {
+    font-size: 2em;
+    color: #ff3333; /* Different color for 'Hi,' */
+}
+
+
+#intro {
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@media screen and (max-width: 600px) {
+    .navbar a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+
+    .channel-cards {
+        flex-direction: column;
+    }
+}

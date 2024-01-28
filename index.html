@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CryptoKeys Unlocked</title>
     <link rel="icon" href="channel_logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="intro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="navbar">
@@ -18,17 +21,20 @@
     </div>
 
     <div class="content">
-        <h2>Welcome to CryptoKeys Unlocked</h2>
-        <p>Embark on an exploration into the depths of cryptography with CryptoKeys Unlocked, your educational gateway to understanding encrypted communication's frontiers. From the enigmatic world of Homomorphic Encryption, which allows computation on encrypted data, to the profound applications of Zero-Knowledge Proofs that enable transactional privacy, our channel is your cipher to these complex concepts.</p>
-        
-        <p>Dive into the revolutionary technology of Blockchain, where cryptographic principles ensure security and trust in a decentralized environment. Understand how cryptographic hashing and consensus algorithms form the backbone of digital currencies and smart contracts.</p>
-
-        <p>Peek into the future with Post-Quantum Cryptography, preparing for the era of quantum computing where current encryption standards will be challenged. Learn about the cryptographic algorithms being developed to resist quantum attacks.</p>
-
-        <p>Join us as we unravel the mysteries of coding in cryptography, where algorithms like RSA, ECC, and AES protect information in the digital domain. Decode the intricacies of cryptographic code and the principles that keep it secure against adversaries.</p>
-        
-        <p>As the landscape of digital security evolves, stay informed with our in-depth tutorials, articles, and live discussions on the latest developments in cryptographic technology. Whether it's understanding the math behind the encryption or implementing secure protocols, CryptoKeys Unlocked is your trusted source for all things cryptography.</p>
-        
+        <div id="intro">
+            <div id="introPart1">
+                <p id="introText" class="styled-text"><span class="hi"></span></p>
+            </div>
+            <div id="introPart2">
+                <p id="additionalInfo" class="styled-text"></p>
+            </div>
+            <div id="introPart3">
+                <p id="interestText" class="styled-text"></p>
+            </div>
+            <!-- Add links to YouTube and GitHub here -->
+        </div>
+           
+        </div>        
         <div class="channel-cards">
             <div class="card">
                 <div class="card-content">
@@ -47,7 +53,7 @@
             </div>
         </div>
     </div>
-
+    <script src="intro.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
