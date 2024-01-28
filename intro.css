@@ -33,15 +33,3 @@ body {
     0% { opacity: 0; }
     100% { opacity: 1; }
 }
-
-@media screen and (max-width: 600px) {
-    .navbar a {
-        float: none;
-        display: block;
-        text-align: left;
-    }
-
-    .channel-cards {
-        flex-direction: column;
-    }
-}
