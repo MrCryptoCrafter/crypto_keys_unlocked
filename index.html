@@ -10,10 +10,34 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="intro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        #footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-links a {
+    margin: 0 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #0056b3;
+}
+
+.social-links i {
+    margin-right: 5px;
+}
+
+    </style>
 </head>
 <body>
     <div class="navbar">
         <a href="index.html" >Home</a>
+        <a href="resume.html">Portfolio</a>
         <a href="blogs.html">Blogs</a>
         <a href="videos.html">Videos</a>
         <a href="algo.html">Implementations</a>
@@ -33,26 +57,24 @@
             </div>
             <!-- Add links to YouTube and GitHub here -->
         </div>
-           
-        </div>        
-        <div class="channel-cards">
-            <div class="card">
-                <div class="card-content">
-                    <h3>YouTube</h3>
-                    <p>Watch our latest videos on cryptography concepts, tutorials, and more.</p>
-                    <a href="https://www.youtube.com/@crypto_key_unlocked" target="_blank" class="card-link">Visit Channel</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-content">
-                    <h3>GitHub</h3>
-                    <p>Explore our projects, code samples, and collaborations on GitHub.</p>
-                    <a href="https://github.com/crypto-keys-unlocked" target="_blank" class="card-link">Visit Profile</a>
-                </div>
+        <div id="footer">
+            <div class="social-links">
+                <a href="https://github.com/crypto-keys-unlocked" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.youtube.com/@crypto_key_unlocked" target="_blank">
+                    <i class="fab fa-youtube"></i> YouTube
+                </a>
+                <a href="resume.html">
+                    <i class="fas fa-briefcase"></i> Portfolio
+                </a>
+                <a href="blogs.html">
+                    <i class="fas fa-blog"></i> Blogs
+                </a>
             </div>
         </div>
-    </div>
+        
+        </div>        
     <script src="intro.js"></script>
     <script src="script.js"></script>
 </body>

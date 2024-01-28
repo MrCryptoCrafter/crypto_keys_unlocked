@@ -1,0 +1,133 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.main-content {
+    display: flex;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 30%;
+    padding-right: 20px;
+}
+
+.main-column {
+    width: 70%;
+}
+
+h2 {
+    color: #2c3e50;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.fa {
+    margin-right: 10px;
+}
+
+.profile-image img {
+    width: 100px; /* Adjust the size as needed */
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #2c3e50;
+    display: block;
+    margin: 0 auto 20px; /* Center align image */
+}
+
+.back-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-link {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.back-link:hover {
+    background-color: #34495e;
+}
+
+.skills {
+    margin-top: 10px;
+}
+
+.skill {
+    margin-bottom: 10px;
+}
+
+.skill-name {
+    font-weight: bold;
+}
+
+.skill-bar {
+    height: 5px;
+    background-color: #2c3e50;
+    margin-top: 3px;
+    border-radius: 2px;
+}
+
+.skill-years {
+    font-size: 0.8em;
+    color: #666;
+    margin-left: 5px;
+}
+
+.main-column h2 {
+    color: #2c3e50;
+    margin-top: 20px;
+}
+
+.main-column p, .main-column ul {
+    margin-bottom: 15px;
+}
+
+.main-column ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.main-column a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.main-column a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .sidebar, .main-column {
+        width: 100%;
+        flex: none; /* Reset flex sizing */
+    }
+}

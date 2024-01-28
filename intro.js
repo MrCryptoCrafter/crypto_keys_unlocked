@@ -1,5 +1,5 @@
-const introText = "Hi 👋 , \nI am Debrup, a Cryptography Enthusiast.🔏";
-const additionalInfo = "Delving into the realms of secure communication, I dedicate my time to researching and implementing groundbreaking cryptographic solutions. 📃  My journey is chronicled here, where I share insights, tutorials, and innovative projects.\n\nExplore my latest blogs, YouTube videos, and collaborations. 👾 Engage with my content and let's unlock the mysteries of cryptography together.🚘";
+const introText = "Hi 👋 , \nI am Debrup, a Cryptography Enthusiast.🧔🏻‍♂️";
+const additionalInfo = "Delving into the realms of secure communication, I dedicate some part of my time to researching and implementing groundbreaking cryptographic solutions📃 .  My journey is chronicled here, where I share insights, tutorials, and innovative projects.\n\nExplore my latest blogs, YouTube videos, and collaborations👾. Engage with my content and let's unlock the mysteries of cryptography together🚘.";
 const interestText = "My areas of interest include Zero-Knowledge Proofs (ZKP), Multi-Party Computation (MPC), Homomorphic Encryption, and Post-Quantum Cryptography, among others.";
 
 let introIndex = 0, additionalIndex = 0, interestIndex = 0;
