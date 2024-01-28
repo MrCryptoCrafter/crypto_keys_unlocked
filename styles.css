@@ -72,6 +72,16 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Adds a subtle shadow for depth */
 }
 
+@media screen and (max-width: 600px) {
+    .channel-cards {
+        position: relative; /* Make channel-cards part of the regular flow */
+    }
+
+    .content {
+        padding-bottom: 20px; /* Reduce padding for small screens */
+    }
+}
+
 /* Text styling for improved readability */
 .content h2, .content p {
     color: #000; /* Darker text color for better contrast */
